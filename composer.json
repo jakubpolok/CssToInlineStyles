@@ -37,7 +37,7 @@
   },
   "autoload": {
     "psr-4": {
-      "voku\\CssToInlineStyles\\": "src"
+      "jakubpolok\\CssToInlineStyles\\": "src"
     }
   },
   "extra": {

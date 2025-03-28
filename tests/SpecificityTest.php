@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-namespace jakubpolok\CssToInlineStyles\tests;
-
 use jakubpolok\CssToInlineStyles\Specificity;
 
 /**
@@ -13,13 +11,13 @@ use jakubpolok\CssToInlineStyles\Specificity;
  */
 final class SpecificityTest extends \PHPUnit\Framework\TestCase
 {
-    public function testGetValues()
+    public function testGetValues(): void
     {
         $specificity = new Specificity(1, 2, 3);
         static::assertSame([1, 2, 3], $specificity->getValues());
     }
 
-    public function testIncreaseValue()
+    public function testIncreaseValue(): void
     {
         $specificity = new Specificity(1, 2, 3);
         $specificity->increase(1, 2, 3);
@@ -33,7 +31,7 @@ final class SpecificityTest extends \PHPUnit\Framework\TestCase
      *
      * @dataProvider getCompareTestData
      */
-    public function testCompare(Specificity $a, Specificity $b, $result)
+    public function testCompare(Specificity $a, Specificity $b, $result): void
     {
         static::assertSame($result, $a->compareTo($b));
     }
@@ -41,7 +39,7 @@ final class SpecificityTest extends \PHPUnit\Framework\TestCase
     /**
      * @return array
      */
-    public function getCompareTestData()
+    public function getCompareTestData(): array
     {
         return [
             [new Specificity(0, 0, 0), new Specificity(0, 0, 0), 0],
@@ -63,7 +61,7 @@ final class SpecificityTest extends \PHPUnit\Framework\TestCase
      *
      * @dataProvider getSelectorData
      */
-    public function testFromSelector($selector, $result)
+    public function testFromSelector($selector, $result): void
     {
         $specificity = Specificity::fromSelector($selector);
         static::assertSame($result, $specificity->getValues());
@@ -72,7 +70,7 @@ final class SpecificityTest extends \PHPUnit\Framework\TestCase
     /**
      * @return array
      */
-    public function getSelectorData()
+    public function getSelectorData(): array
     {
         return [
             ['*', [0, 0, 0]],
@@ -92,7 +90,7 @@ final class SpecificityTest extends \PHPUnit\Framework\TestCase
      *
      * @dataProvider getSkippedSelectorData
      */
-    public function testSkippedFromSelector($selector, $result)
+    public function testSkippedFromSelector($selector, $result): void
     {
         static::markTestSkipped(
             'Skipping edge cases in CSS'
@@ -105,7 +103,7 @@ final class SpecificityTest extends \PHPUnit\Framework\TestCase
     /**
      * @return array
      */
-    public function getSkippedSelectorData()
+    public function getSkippedSelectorData(): array
     {
         return [
             ['#s12:not(FOO)', [1, 0, 1]],

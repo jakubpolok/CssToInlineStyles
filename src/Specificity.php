@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace voku\CssToInlineStyles;
+namespace jakubpolok\CssToInlineStyles;
 
 /**
  * CSS to Inline Styles Specificity class.

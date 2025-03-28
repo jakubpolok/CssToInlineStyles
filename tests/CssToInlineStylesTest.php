@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace voku\CssToInlineStyles\tests;
+namespace jakubpolok\CssToInlineStyles\tests;
 
-use voku\CssToInlineStyles\CssToInlineStyles;
+use jakubpolok\CssToInlineStyles\CssToInlineStyles;
+use jakubpolok\CssToInlineStyles\Exception;
 
 /**
  * Class CssToInlineStylesTest
@@ -18,12 +19,12 @@ final class CssToInlineStylesTest extends \PHPUnit\Framework\TestCase
      */
     protected $cssToInlineStyles;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->cssToInlineStyles = new CssToInlineStyles();
     }
 
-    protected function teardown()
+    protected function teardown(): void
     {
         $this->cssToInlineStyles = null;
     }
@@ -954,11 +955,11 @@ EXPECTED;
     div.row {width: 100%;display: block;clear: both;}
     div.col-25 { width: 25%;float: left; display: block;padding: 10px;}
     div.content {width:100%; background: #eee;padding: 10px;}
-    
+
     @media only screen and (min-width: 360px) {
       div.col-25 { width: 100%; float: left; display: block;padding: 10px;}
     }
-    
+
     @media only screen and (min-width: 120px) {
       div.col-25 { width: 100%; display: block; padding: 15px;}
     }
@@ -972,7 +973,7 @@ EXPECTED;
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     </head>
     <body>
-    
+
     <div class="row">
       <div class="col-25">
         <div class="content">Hello World!</div>
@@ -987,7 +988,7 @@ EXPECTED;
         <div class="content">Hello World!</div>
       </div>
     </div>
-    
+
     </body>
     </html>
 HTML;
@@ -998,7 +999,7 @@ HTML;
     <head>
       <title>Testing</title>
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    
+
 <style type="text/css">
 @media only screen and (min-width: 360px) {
       div.col-25 { width: 100%; float: left; display: block;padding: 10px;}
@@ -1009,7 +1010,7 @@ HTML;
 </style>
 </head>
     <body style="-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; margin: 0; padding: 0; width: 100%;">
-    
+
     <div class="row" style="-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; clear: both; display: block; width: 100%;">
       <div class="col-25" style="-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; display: block; float: left; padding: 10px; width: 25%;">
         <div class="content" style="-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; background: #eee; padding: 10px; width: 100%;">Hello World!</div>
@@ -1024,7 +1025,7 @@ HTML;
         <div class="content" style="-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; background: #eee; padding: 10px; width: 100%;">Hello World!</div>
       </div>
     </div>
-    
+
     </body>
     </html>
 EXPECTED;
@@ -1072,7 +1073,7 @@ EXPECTED;
      * @param string $expected
      * @param bool   $asXHTML
      *
-     * @throws \voku\CssToInlineStyles\Exception
+     * @throws Exception
      *
      * @return string
      */

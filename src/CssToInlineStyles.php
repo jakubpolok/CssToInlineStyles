@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace voku\CssToInlineStyles;
+namespace jakubpolok\CssToInlineStyles;
 
 use Symfony\Component\CssSelector\CssSelectorConverter;
 use Symfony\Component\CssSelector\Exception\ExceptionInterface;
@@ -150,7 +150,7 @@ class CssToInlineStyles
      * @param string|null $html the HTML to process
      * @param string|null $css  the CSS to use
      */
-    public function __construct(string $html = null, string $css = null)
+    public function __construct(?string $html = null, ?string $css = null)
     {
         if ($html !== null) {
             $this->setHTML($html);
@@ -179,7 +179,7 @@ class CssToInlineStyles
      *
      * @return string
      */
-    public function convert(bool $outputXHTML = false, int $libXMLExtraOptions = null, $path = null): string
+    public function convert(bool $outputXHTML = false, ?int $libXMLExtraOptions = null, $path = null): string
     {
         // validate
         if (!$this->html) {

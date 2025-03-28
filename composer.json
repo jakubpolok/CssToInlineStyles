@@ -1,5 +1,5 @@
 {
-  "name": "voku/css-to-inline-styles",
+  "name": "jakubpolok/css-to-inline-styles",
   "type": "library",
   "description": "Only a Fork of -> CssToInlineStyles is a class that enables you to convert HTML-pages/files into HTML-pages/files with inline styles. This is very useful when you're sending emails.",
   "keywords": [
